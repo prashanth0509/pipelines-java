@@ -7,6 +7,8 @@ trigger:
 - main
 
 pool: chill
+demands:
+-Agent.Name -equals super
   #vmImage: Windows-latest
 
 steps:
