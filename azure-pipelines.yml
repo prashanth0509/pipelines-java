@@ -6,10 +6,8 @@
 trigger:
 - main
 
-pool:
-  name: chill
-demands:
-- Agent.Name -equals super
+pool: super
+  #vmImage: Windows-latest
 
 steps:
 - task: Maven@3
