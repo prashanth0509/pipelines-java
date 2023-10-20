@@ -1,36 +1,7 @@
-# Maven
-- task: AzureResourceManagerTemplateDeployment@3
+- task: AzureRmWebAppDeployment@4
   inputs:
-    deploymentScope: 'Resource Group'
-    azureResourceManagerConnection: 'Pay-As-You-Go(df0f9628-9472-4ce6-bff5-74c20bfbc0c7)'
-    subscriptionId: 'df0f9628-9472-4ce6-bff5-74c20bfbc0c7'
-    action: 'Create Or Update Resource Group'
-    resourceGroupName: 'DefaultResourceGroup-EUS'
-    location: 'East US'
-    templateLocation: 'Linked artifact'
-    csmFile: 'hello'
-    deploymentMode: 'Incremental'
-# Build your Java project and run tests with Apache Maven.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/java
-
-trigger:
-- main
-
-pool: chill
-demands:
--Agent.Name -equals super
-  #vmImage: Windows-latest
-
-steps:
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
-    
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Pay-As-You-Go(df0f9628-9472-4ce6-bff5-74c20bfbc0c7)'
+    appType: 'webApp'
+    WebAppName: 'hello'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
