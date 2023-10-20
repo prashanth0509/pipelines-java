@@ -7,7 +7,9 @@ trigger:
 - main
 
 pool:
-  vmImage: Windows-latest
+  name: chill
+demands:
+- Agent.Name -equals super
 
 steps:
 - task: Maven@3
