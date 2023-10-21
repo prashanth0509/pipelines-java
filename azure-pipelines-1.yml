@@ -10,7 +10,6 @@ pool:
   name: agentpool
 demands:
 - Agent.Name -equals sampleagent
-
 steps:
 - task: Maven@3
   inputs:
